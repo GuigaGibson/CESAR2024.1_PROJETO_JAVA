@@ -1,0 +1,20 @@
+
+@media all and (max-width: 1100px) {
+  .list-view.editing .toolbar,
+  .list-view.editing .contact-grid {
+    display: none;
+  }
+}
+
+a[highlight] {
+  font-weight: bold;
+
+}
+
+.custom-drawer {
+
+}
+
+.background-form{
+  background-color: #ccffcc;
+}

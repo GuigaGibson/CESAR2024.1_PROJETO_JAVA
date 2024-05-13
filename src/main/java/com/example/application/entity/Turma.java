@@ -1,16 +1,16 @@
-package com.example.application.data;
+package com.example.application.entity;
 
 import jakarta.persistence.Entity;
 
 @Entity
-public class Status extends AbstractEntity {
+public class Turma extends AbstractEntity {
     private String name;
 
-    public Status() {
+    public Turma() {
 
     }
 
-    public Status(String name) {
+    public Turma(String name) {
         this.name = name;
     }
 

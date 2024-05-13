@@ -1,4 +1,4 @@
-package com.example.application.data;
+package com.example.application.entity;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -49,4 +49,7 @@ public abstract class AbstractEntity {
         }
         return super.equals(that);
     }
+
+
+
 }
