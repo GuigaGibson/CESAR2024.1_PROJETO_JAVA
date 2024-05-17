@@ -1,6 +1,6 @@
 package com.example.application.view;
 
-import com.example.application.data.services.CrmService;
+import com.example.application.data.services.ELTService;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.charts.Chart;
 import com.vaadin.flow.component.charts.model.ChartType;
@@ -18,9 +18,9 @@ import jakarta.annotation.security.PermitAll;
 @Route(value = "relatorios", layout = LayoutPrincipal.class)
 @PageTitle("Relatórios | Vaadin CRM")
 public class RelatorioView extends VerticalLayout {
-    private final CrmService service;
+    private final ELTService service;
 
-    public RelatorioView(CrmService service) {
+    public RelatorioView(ELTService service) {
         this.service = service;
         addClassName("dashboard-view");
         setDefaultHorizontalComponentAlignment(Alignment.CENTER); 

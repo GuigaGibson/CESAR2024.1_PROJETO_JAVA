@@ -13,6 +13,7 @@ import jakarta.annotation.security.PermitAll;
 @PermitAll
 @Route("login")
     @PageTitle("Login | Trilha de EletivasView")
+
     public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 
         private final LoginForm login = new LoginForm();

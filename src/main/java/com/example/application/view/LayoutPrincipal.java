@@ -12,6 +12,7 @@ import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
 public class LayoutPrincipal extends AppLayout {
+
     private final SecurityService securityService;
 
     public LayoutPrincipal(SecurityService securityService) {

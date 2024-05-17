@@ -25,11 +25,12 @@ public class Form extends FormLayout {
     public void setContact(Aluno aluno) {
         binder.setBean(aluno);
     }
+
     TextField matricula = new TextField("Matrícula");
     TextField nome = new TextField("Nome");
     TextField eletiva = new TextField("Eletiva");
-    ComboBox<Serie> serie = new ComboBox<>("Serie");
-    ComboBox<Turma> turma = new ComboBox<>("Turma");
+    ComboBox<Serie> serie = new ComboBox<>("Turma");
+    ComboBox<Turma> turma = new ComboBox<>("Serie");
 
 
     Button save = new Button("Salvar");
@@ -59,6 +60,7 @@ public class Form extends FormLayout {
         save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         delete.addThemeVariants(ButtonVariant.LUMO_ERROR);
         close.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+        close.addClassName("green-link");
 
         save.addClickShortcut(Key.ENTER);
         close.addClickShortcut(Key.ESCAPE);
@@ -76,11 +78,6 @@ public class Form extends FormLayout {
                 fireEvent(new SaveEvent(this, binder.getBean()));
             }
         }
-
-
-
-
-
 
 
 // Events

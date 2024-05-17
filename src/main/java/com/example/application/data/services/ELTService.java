@@ -11,13 +11,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CrmService {
+public class ELTService {
 
     private final AlunoRepository alunoRepository;
     private final TurmaRepository turmaRepository;
     private final SerieRepository serieRepository;
 
-    public CrmService(AlunoRepository alunoRepository,
+    public ELTService(AlunoRepository alunoRepository,
                       TurmaRepository turmaRepository,
                       SerieRepository serieRepository) {
         this.alunoRepository = alunoRepository;

@@ -11,10 +11,47 @@ a[highlight] {
 
 }
 
-.custom-drawer {
+
+
+html {
+  --lumo-primary-color: green;
+  --lumo-secondary-color: green;
+  
+}
+
+.cor{
+  color: white;
+}
+
+.add-navbar{
+  background-color: #22852d;
+}
+
+
+.black-link {
+  font-style: bold;
+  color: black;
+  text-decoration: none; /* Remove sublinhado se desejado */
+}
+
+
+.green-link {
+  font-style: bold;
+  color:#22852d ;
+  text-decoration: none; /* Remove sublinhado se desejado */
 
 }
 
-.background-form{
-  background-color: #ccffcc;
+
+.home{
+  width:600px;
+  height: 240px;
+}
+
+.img-perfil{
+  margin: 0; /* Remove todas as margens */
+  padding: 0; /* Remove todos os preenchimentos */
+  width: 100%; /* Faz a imagem ocupar toda a largura */
+  height: 100%; /* Faz a imagem ocupar toda a altura */
+  object-fit: cover;
 }

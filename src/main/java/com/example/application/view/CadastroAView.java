@@ -2,7 +2,7 @@ package com.example.application.view;
 
 import com.example.application.entity.Aluno;
 import com.example.application.entity.Form;
-import com.example.application.data.services.CrmService;
+import com.example.application.data.services.ELTService;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
@@ -23,9 +23,9 @@ public class CadastroAView extends VerticalLayout {
     Grid<Aluno> grid = new Grid<>(Aluno.class);
     TextField filterText = new TextField();
     Form form;
-    CrmService service;
+    ELTService service;
 
-    public CadastroAView(CrmService service) {
+    public CadastroAView(ELTService service) {
         this.service = service;
         addClassName("list-view");
         setSizeFull();
@@ -61,7 +61,7 @@ public class CadastroAView extends VerticalLayout {
         grid.getColumnByKey("matricula").setHeader("Matrícula");
         grid.getColumnByKey("nome").setHeader("Nome");
         grid.getColumnByKey("eletiva").setHeader("Eletiva");
-        grid.addColumn(contact -> contact.getTurma().getName()).setHeader("Ano");
+        grid.addColumn(contact -> contact.getTurma().getName()).setHeader("Série:");
         grid.addColumn(contact -> contact.getSerie().getName()).setHeader("Turma");
         grid.getColumns().forEach(col -> col.setAutoWidth(true));
 
@@ -76,6 +76,7 @@ public class CadastroAView extends VerticalLayout {
         filterText.addValueChangeListener(e -> updateList());
 
         Button addContactButton = new Button("Adicionar aluno");
+        addContactButton.addClassName("black-link");
         addContactButton.addClickListener(click -> addContact());
 
         var toolbar = new HorizontalLayout(filterText, addContactButton);
