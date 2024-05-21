@@ -9,41 +9,31 @@ import jakarta.validation.constraints.NotEmpty;
 
 
 @Entity
-public class Aluno extends AbstractEntity{
-
+public class Gestor extends AbstractEntity {
 
     @NotEmpty
-    private String matricula = "";
+    private String matricula  = "";
 
     @NotEmpty
     private String nome = "";
 
     @NotEmpty
+    @Email
     private String email =" ";
-
-    @NotEmpty
-    private String serie;
-
-    @NotEmpty
-    private String turma;
-
-    @NotEmpty
-    private String eletiva = " ";
 
     @NotEmpty
     private String senha = " ";
 
 
 
-    public Aluno() {
+    public Gestor() {
         this.matricula = matricula;
         this.nome = nome;
         this.email = email;
-        this.serie = serie;
-        this.turma = turma;
-        this.eletiva = eletiva;
         this.senha = senha;
+
     }
+
 
 
     ///
@@ -57,11 +47,11 @@ public class Aluno extends AbstractEntity{
 
 
     ///
-    public String getNome() {
+    public String getName() {
         return nome;
     }
 
-    public void setNome(String nome) {
+    public void setName(String name) {
         this.nome = nome;
     }
 
@@ -77,36 +67,6 @@ public class Aluno extends AbstractEntity{
 
 
     ///
-    public String getSerie() {
-        return serie;
-    }
-
-    public void setSerie(String serie) {
-        this.serie = serie;
-    }
-
-
-    ///
-    public String getTurma() {
-        return turma;
-    }
-
-    public void setTurma(String turma) {
-        this.turma = turma;
-    }
-
-
-    ///
-    public String getEletiva() {
-        return eletiva;
-    }
-
-    public void setEletiva(String eletiva) {
-        this.eletiva = eletiva;
-    }
-
-
-    ///
     public String getSenha() {
         return senha;
     }
@@ -117,3 +77,4 @@ public class Aluno extends AbstractEntity{
 
 
 }
+

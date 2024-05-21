@@ -12,31 +12,31 @@ import jakarta.annotation.security.PermitAll;
 
 @PermitAll
 @Route("login")
-    @PageTitle("Login | Trilha de EletivasView")
+@PageTitle("Login | Trilha de EletivasView")
 
-    public class LoginView extends VerticalLayout implements BeforeEnterObserver {
+public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 
-        private final LoginForm login = new LoginForm();
+    private final LoginForm login = new LoginForm();
 
-        public LoginView(){
-            addClassName("login-view");
-            setSizeFull();
-            setAlignItems(Alignment.CENTER);
-            setJustifyContentMode(JustifyContentMode.CENTER);
+    public LoginView(){
+        addClassName("login-view");
+        setSizeFull();
+        setAlignItems(Alignment.CENTER);
+        setJustifyContentMode(JustifyContentMode.CENTER);
 
-            login.setAction("login");
+        login.setAction("login");
 
-            add(new H1("TRILHAS ELETIVAS"), login);
-        }
+        add(new H1("TRILHAS ELETIVAS"), login);
+    }
 
-        @Override
-        public void beforeEnter(BeforeEnterEvent beforeEnterEvent) {
-            // inform the user about an authentication error
-            if(beforeEnterEvent.getLocation()
-                    .getQueryParameters()
-                    .getParameters()
-                    .containsKey("error")) {
-                login.setError(true);
-            }
+    @Override
+    public void beforeEnter(BeforeEnterEvent beforeEnterEvent) {
+        // inform the user about an authentication error
+        if(beforeEnterEvent.getLocation()
+                .getQueryParameters()
+                .getParameters()
+                .containsKey("error")) {
+            login.setError(true);
         }
     }
+}

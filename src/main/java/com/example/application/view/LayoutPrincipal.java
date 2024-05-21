@@ -13,10 +13,12 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 
 public class LayoutPrincipal extends AppLayout {
 
+
     private final SecurityService securityService;
 
     public LayoutPrincipal(SecurityService securityService) {
         this.securityService = securityService;
+
         createHeader(); // cria cabeçalho
         createDrawer(); // cria menu vertical
 
@@ -55,11 +57,11 @@ public class LayoutPrincipal extends AppLayout {
 
     private void createDrawer() {
         RouterLink homeLink = new RouterLink("Home", HomeView.class);
-        RouterLink cadastroLink = new RouterLink("Cadastro de Alunos", CadastroAView.class);
+        RouterLink cadastroLink = new RouterLink("Cadastro de Alunos", CadastroAluno.class);
         RouterLink eletivasLink = new RouterLink("Eletivas", EletivasView.class);
         RouterLink manipularLink = new RouterLink("Manipular Usuários", ManipularAView.class);
         RouterLink periodoLink = new RouterLink("Período de Matricula", PeriodoMatriculaView.class);
-        RouterLink relatoriosLink = new RouterLink("Relatórios", RelatorioView.class);
+        //RouterLink relatoriosLink = new RouterLink("Relatórios", RelatorioView.class);
         RouterLink perfilLink = new RouterLink("Perfil", PerfilGestorView.class);
 
         // Adiciona a classe CSS personalizada aos links
@@ -68,7 +70,7 @@ public class LayoutPrincipal extends AppLayout {
         eletivasLink.addClassName("black-link");
         manipularLink.addClassName("black-link");
         periodoLink.addClassName("black-link");
-        relatoriosLink.addClassName("black-link");
+        //relatoriosLink.addClassName("black-link");
         perfilLink.addClassName("black-link");
 
         VerticalLayout drawer = new VerticalLayout(
@@ -77,7 +79,7 @@ public class LayoutPrincipal extends AppLayout {
                 eletivasLink,
                 manipularLink,
                 periodoLink,
-                relatoriosLink,
+                //relatoriosLink,
                 perfilLink
         );
 
