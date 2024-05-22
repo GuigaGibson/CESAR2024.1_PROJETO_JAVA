@@ -1,66 +1,133 @@
-/*
- * Copyright 2000-2017 Vaadin Ltd.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
 package com.example.application.entity;
 
-import com.example.application.data.AlunoRepository;
-import com.example.application.view.LayoutPrincipal;
+import com.example.application.data.services.RegistrationServiceA;
+import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.ComponentEvent;
+import com.vaadin.flow.component.ComponentEventListener;
+import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.formlayout.FormLayout;
-import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import com.vaadin.flow.router.Route;
+import com.vaadin.flow.component.textfield.EmailField;
+import com.vaadin.flow.component.textfield.PasswordField;
+import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.data.binder.BeanValidationBinder;
+import com.vaadin.flow.shared.Registration;
 import jakarta.annotation.security.PermitAll;
 
 
 @PermitAll
-@Route (value= "form-aluno", layout = LayoutPrincipal.class)
-public class FormCadastroA extends HorizontalLayout {
-    
-    private final AlunoRepository repoA;
-    private final Grid<Aluno> alunos = new Grid<>(Aluno.class);
+public class FormCadastroA extends FormLayout {
 
-    
-    public FormCadastroA(AlunoRepository repoA) {
-        this.repoA = repoA;
-        // Build the layout
+    BeanValidationBinder<Aluno> binder = new BeanValidationBinder<>(Aluno.class);
 
-        H1 heading = new H1("Lista de Cadastro");
-        Button update = new Button(VaadinIcon.REFRESH.create());
-        add(heading, update, alunos);
-        setSizeFull();
-        
-        alunos.setColumns("matricula", "nome", "email", "senha", "serie", "turma");
-        alunos.addComponentColumn(order -> {
-            Button deleteBtn = new Button(VaadinIcon.TRASH.create());
-            deleteBtn.addClickListener(e -> {
-                repoA.delete(order);
-                listOrders();
-            });
-            return deleteBtn;
-        });
-        listOrders();
-        
-        update.addClickListener(e -> listOrders());
-        
+    public void setContact(Aluno aluno) {
+        binder.setBean(aluno);
     }
 
-    public void listOrders() {
-        alunos.setItems(repoA.findAll());
+    TextField matricula = new TextField("Matrícula");
+    TextField nome = new TextField("Nome");
+    EmailField email = new EmailField("Email");
+    PasswordField senha = new PasswordField("Senha");
+    ComboBox<String>  serie = new ComboBox<>("Serie");
+    ComboBox<String> turma = new ComboBox<>("Turma");
+
+
+
+
+    Button save = new Button("Salvar");
+    Button delete = new Button("Deletar");
+    Button close = new Button("Cancelar");
+
+
+    public FormCadastroA() {
+        addClassName("aluno-form");
+        binder.bindInstanceFields(this);
+
+        configureCombox();
+        add(matricula,
+                nome,
+                email,
+                senha,
+                serie,
+                turma,
+                createButtonsLayout());
     }
-    
+
+    private void configureCombox() {
+        RegistrationServiceA service = new RegistrationServiceA();
+        serie.setItems(service.getSerie());
+        turma.setItems(service.getTurma());
+    }
+
+
+    private Component createButtonsLayout() {
+        save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        delete.addThemeVariants(ButtonVariant.LUMO_ERROR);
+        close.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+        close.addClassName("green-link");
+
+        save.addClickShortcut(Key.ENTER);
+        close.addClickShortcut(Key.ESCAPE);
+
+        save.addClickListener(event -> validateAndSave());
+        delete.addClickListener(event -> fireEvent(new DeleteEvent(this, binder.getBean())));
+        close.addClickListener(event -> fireEvent(new CloseEvent(this)));
+        binder.addStatusChangeListener(e -> save.setEnabled(binder.isValid()));
+        return new HorizontalLayout(save, delete, close);
+
+    }
+
+    private void validateAndSave() {
+        if (binder.isValid()) {
+            fireEvent(new SaveEvent(this, binder.getBean()));
+        }
+    }
+
+
+    // Events
+    public static abstract class ContactFormEvent extends ComponentEvent<FormCadastroA> {
+        private final Aluno aluno;
+
+        protected ContactFormEvent(FormCadastroA source, Aluno aluno) {
+            super(source, false);
+            this.aluno = aluno;
+        }
+
+        public Aluno getContact() {
+            return aluno;
+        }
+    }
+
+    public static class SaveEvent extends ContactFormEvent {
+        SaveEvent(FormCadastroA source, Aluno aluno) {
+            super(source, aluno);
+        }
+    }
+
+    public static class DeleteEvent extends ContactFormEvent {
+        DeleteEvent(FormCadastroA source, Aluno aluno) {
+            super(source, aluno);
+        }
+
+    }
+
+    public static class CloseEvent extends ContactFormEvent {
+        CloseEvent(FormCadastroA source) {
+            super(source, null);
+        }
+    }
+
+    public Registration addDeleteListener(ComponentEventListener<DeleteEvent> listener) {
+        return addListener(DeleteEvent.class, listener);
+    }
+
+    public Registration addSaveListener(ComponentEventListener<SaveEvent> listener) {
+        return addListener(SaveEvent.class, listener);
+    }
+    public Registration addCloseListener(ComponentEventListener<CloseEvent> listener) {
+        return addListener(CloseEvent.class, listener);
+    }
 }

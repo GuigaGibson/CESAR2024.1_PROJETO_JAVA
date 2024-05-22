@@ -9,8 +9,7 @@ import java.util.List;
 
 public interface AlunoRepository extends JpaRepository<Aluno, Long> {
 
-        @Query("SELECT a FROM Aluno a WHERE a.nome LIKE %:nome%")
-        List<Aluno> search(@Param("nome") String nome);
-    }
-
+    @Query("SELECT a FROM Aluno a WHERE a.nome LIKE %:nome%")
+    List<Aluno> search(@Param("nome") String nome);
+}
 

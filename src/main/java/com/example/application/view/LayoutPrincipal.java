@@ -57,7 +57,7 @@ public class LayoutPrincipal extends AppLayout {
 
     private void createDrawer() {
         RouterLink homeLink = new RouterLink("Home", HomeView.class);
-        RouterLink cadastroLink = new RouterLink("Cadastro de Alunos", CadastroAluno.class);
+        RouterLink cadastroLink = new RouterLink("Cadastro de Alunos", CadastroAView.class);
         RouterLink eletivasLink = new RouterLink("Eletivas", EletivasView.class);
         RouterLink manipularLink = new RouterLink("Manipular Usuários", ManipularAView.class);
         RouterLink periodoLink = new RouterLink("Período de Matricula", PeriodoMatriculaView.class);
