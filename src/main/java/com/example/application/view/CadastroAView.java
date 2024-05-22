@@ -15,6 +15,7 @@ import com.vaadin.flow.router.Route;
 import jakarta.annotation.security.PermitAll;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @PermitAll
 @Route(value = "cadastro_aluno", layout = LayoutPrincipal.class)
@@ -113,9 +114,14 @@ public class CadastroAView extends VerticalLayout {
     }
 
     private void updateList() {
-        List<Aluno> alunos = service.getAllAlunos();
-        grid.setItems(alunos);
+        String filter = filterText.getValue().toLowerCase().trim(); // Obtém o valor do filtro e o normaliza
+
+        // Define os alunos filtrados diretamente no Grid, aplicando o filtro ao obter a lista do serviço
+        grid.setItems(service.getAllAlunos().stream()
+                .filter(aluno -> aluno.getNome().toLowerCase().contains(filter))
+                .collect(Collectors.toList()));
     }
+
 
     private void saveContact(FormCadastroA.SaveEvent event) {
         service.register(event.getContact());
