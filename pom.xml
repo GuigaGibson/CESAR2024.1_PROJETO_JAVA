@@ -28,6 +28,11 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
+            <repository>
+                <id>mysql</id>
+                <url>https://repo1.maven.org/maven2/mysql/</url>
+            </repository>
+
     </repositories>
 
     <dependencyManagement>
@@ -42,8 +47,13 @@
         </dependencies>
     </dependencyManagement>
 
-
     <dependencies>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.28</version> <!-- Ou a versão que estiver usando -->
+        </dependency>
+
         <dependency>
             <groupId>com.vaadin</groupId>
             <!-- Replace artifactId with vaadin-core to use only free components -->

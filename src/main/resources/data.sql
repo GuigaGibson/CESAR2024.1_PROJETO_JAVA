@@ -1,6 +1,6 @@
 INSERT INTO ALUNO (ID, VERSION, MATRICULA, NOME, EMAIL, SERIE, TURMA, SENHA) VALUES
 (1, 1, '20232GTIPL0312', 'João Silva', 'joao.silva@example.com', '1° ANO', 'B', 'senha123'),
-(2, 1, '20232GTIPL0419', 'Maria Eduarda', 'dudaazv@example.com', '2° ANO', 'A', 'jds566'),
+(2, 1, '20232GTIPL0419', 'Maria Eduarda', 'dudaazv@example.com', '2° ANO', 'A', '123'),
 (3, 1, '20232GTIPL0718', 'Rogerio Fernandes', 'rogerio678@example.com', '3° ANO', 'C', 'rgr789'),
 (4, 1, '2023GTIPL0417', 'Mercio Luiz', 'mluiz89@example.com', '2° ANO', 'A', 'mercio209'),
 (5, 1, '20232GTIPL457', 'Julia Ribeiro', 'juribeiro16@example.com', '1° ANO', 'B', 'ju123'),
@@ -18,5 +18,6 @@ INSERT INTO ALUNO (ID, VERSION, MATRICULA, NOME, EMAIL, SERIE, TURMA, SENHA) VAL
 (17, 1, '20260GTI4321', 'Rodrigo Martins', 'rodrigomartins@example.com', '3° ANO', 'C', 'rm987');
 
 
-
+INSERT INTO GESTOR (ID, VERSION, MATRICULA, NOME, EMAIL, SENHA) VALUES
+(1,1,'20232ADMPL0876', 'Leandro Lima', 'leandro@gmail.com', '4444');
 

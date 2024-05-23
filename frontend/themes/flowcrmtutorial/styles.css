@@ -16,7 +16,7 @@ a[highlight] {
 html {
   --lumo-primary-color: green;
   --lumo-secondary-color: green;
-  
+
 }
 
 .cor{
@@ -54,4 +54,11 @@ html {
   width: 100%; /* Faz a imagem ocupar toda a largura */
   height: 100%; /* Faz a imagem ocupar toda a altura */
   object-fit: cover;
+}
+.eletiva-box {
+  padding-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
 }

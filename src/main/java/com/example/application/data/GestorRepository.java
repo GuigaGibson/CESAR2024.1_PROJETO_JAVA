@@ -11,8 +11,12 @@ import java.util.List;
 
 public interface GestorRepository extends JpaRepository<Gestor, Long> {
 
-        @Query("SELECT g FROM Gestor g WHERE g.nome LIKE %:nome%")
-        List<Gestor> search(@Param("nome") String nome);
-    }
+    @Query("SELECT g FROM Gestor g WHERE g.nome LIKE %:nome%")
+    List<Gestor> search(@Param("nome") String nome);
+
+    @Query("SELECT g FROM Gestor g WHERE (g.email = :parametro OR g.matricula = :parametro) AND g.senha = :senha")
+    Gestor validarLogin(@Param("parametro") String parametro, @Param("senha") String senha);
+
+}
 
     

@@ -1,7 +1,6 @@
 package com.example.application.view;
 
 
-import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;

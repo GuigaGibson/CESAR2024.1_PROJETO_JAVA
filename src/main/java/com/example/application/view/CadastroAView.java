@@ -12,16 +12,21 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import jakarta.annotation.security.PermitAll;
+import jakarta.annotation.security.RolesAllowed;
+import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.List;
 import java.util.stream.Collectors;
 
-@PermitAll
+@RolesAllowed ("ROLE_GESTOR")
 @Route(value = "cadastro_aluno", layout = LayoutPrincipal.class)
 @PageTitle("Alunos cadastrados | Trilhas EletivasView ")
 
 public class CadastroAView extends VerticalLayout {
+
+    @GetMapping("/cadastro-aluno")
+    public String cadastroAluno() {
+        return "cadastroAlunoView";
+    }
     private Grid<Aluno> grid = new Grid<>(Aluno.class);
     private TextField filterText = new TextField();
     private FormCadastroA form = new FormCadastroA();
