@@ -7,7 +7,7 @@ import com.vaadin.flow.router.Route;
 import jakarta.annotation.security.PermitAll;
 
 @PermitAll
-@Route(value = "periodomatricula", layout = LayoutPrincipal.class)
+@Route(value = "periodomatricula", layout = LayoutPrincipalAluno.class)
 @PageTitle("Período Matricula | Trilhas Eletivas")
 
 public class PeriodoMatriculaView extends VerticalLayout {

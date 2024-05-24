@@ -8,7 +8,7 @@ import com.vaadin.flow.router.Route;
 import jakarta.annotation.security.PermitAll;
 
 @PermitAll
-@Route(value = "perfilgestor", layout = LayoutPrincipal.class)
+@Route(value = "perfilgestor", layout = LayoutPrincipalAluno.class)
 @PageTitle ("Perfil | Trilhas Eletivas")
 
 public class PerfilGestorView extends VerticalLayout {

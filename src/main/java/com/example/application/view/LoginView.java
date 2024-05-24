@@ -9,8 +9,9 @@ import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import jakarta.annotation.security.PermitAll;
+import jakarta.annotation.security.RolesAllowed;
 
-@PermitAll
+
 @Route("login")
 @PageTitle("Login | Trilha de EletivasView")
 

@@ -7,7 +7,7 @@ import com.vaadin.flow.router.Route;
 import jakarta.annotation.security.PermitAll;
 
 @PermitAll
-@Route (value = "manipularA", layout = LayoutPrincipal.class)
+@Route (value = "manipularA", layout = LayoutPrincipalAluno.class)
 @PageTitle("Manipular Usuários | Trilhas Eletivas")
 
 public class ManipularAView extends VerticalLayout {

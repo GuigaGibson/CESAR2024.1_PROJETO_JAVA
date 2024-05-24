@@ -12,12 +12,12 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
-public class LayoutPrincipal extends AppLayout {
+public class LayoutPrincipalAluno extends AppLayout {
 
 
     private final SecurityService securityService;
 
-    public LayoutPrincipal(SecurityService securityService) {
+    public LayoutPrincipalAluno(SecurityService securityService) {
         this.securityService = securityService;
 
         createHeader(); // cria cabeçalho
@@ -57,29 +57,28 @@ public class LayoutPrincipal extends AppLayout {
     }
 
     private void createDrawer() {
-        RouterLink homeLink = new RouterLink("Home", HomeView.class);
-        RouterLink cadastroLink = new RouterLink("Cadastro de Alunos", CadastroAView.class);
+
         RouterLink eletivasLink = new RouterLink("Eletivas", EletivasView.class);
-        RouterLink manipularLink = new RouterLink("Manipular Usuários", ManipularAView.class);
-        RouterLink periodoLink = new RouterLink("Período de Matricula", PeriodoMatriculaView.class);
+        //RouterLink manipularLink = new RouterLink("Manipular Usuários", ManipularAView.class);
+        //RouterLink periodoLink = new RouterLink("Período de Matricula", PeriodoMatriculaView.class);
         //RouterLink relatoriosLink = new RouterLink("Relatórios", RelatorioView.class);
         RouterLink perfilLink = new RouterLink("Perfil", PerfilGestorView.class);
 
         // Adiciona a classe CSS personalizada aos links
-        homeLink.addClassName("black-link");
-        cadastroLink.addClassName("black-link");
+        //homeLink.addClassName("black-link");
+        //cadastroLink.addClassName("black-link");
         eletivasLink.addClassName("black-link");
-        manipularLink.addClassName("black-link");
-        periodoLink.addClassName("black-link");
+        //manipularLink.addClassName("black-link");
+        //periodoLink.addClassName("black-link");
         //relatoriosLink.addClassName("black-link");
         perfilLink.addClassName("black-link");
 
         VerticalLayout drawer = new VerticalLayout(
-                homeLink,
-                cadastroLink,
+                //homeLink,
+                //cadastroLink,
                 eletivasLink,
-                manipularLink,
-                periodoLink,
+               // manipularLink,
+                //periodoLink,
                 //relatoriosLink,
                 perfilLink
         );
