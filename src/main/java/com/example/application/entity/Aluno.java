@@ -33,6 +33,9 @@ public class Aluno extends AbstractEntity{
     @NotEmpty
     private String senha = " ";
 
+    //@NotEmpty
+   // private boolean primeiroLogin = true;
+
 
 
     public Aluno() {
@@ -43,6 +46,7 @@ public class Aluno extends AbstractEntity{
         this.turma = turma;
         this.eletiva = eletiva;
         this.senha = senha;
+       // this.primeiroLogin = primeiroLogin;
     }
 
 
@@ -115,5 +119,10 @@ public class Aluno extends AbstractEntity{
         this.senha = senha;
     }
 
+//    public boolean isPrimeiroLogin() {
+ //       return primeiroLogin;
+    }
 
-}
+   // public void setPrimeiroLogin(boolean primeiroLogin) {
+     //   this.primeiroLogin = primeiroLogin;
+    //}

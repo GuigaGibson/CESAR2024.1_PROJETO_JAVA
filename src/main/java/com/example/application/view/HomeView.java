@@ -15,9 +15,9 @@ public class HomeView extends VerticalLayout {
 
     public HomeView() {
         setAlignItems(Alignment.CENTER);
-        //Image img = new Image("images/a.png", "placeholder plant");
-        //img.addClassName("home");
-        //add(img);
+        Image img = new Image("images/a.png", "placeholder plant");
+        img.addClassName("home");
+        add(img);
     }
 
 

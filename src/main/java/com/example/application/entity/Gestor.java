@@ -18,7 +18,6 @@ public class Gestor extends AbstractEntity {
     private String nome = "";
 
     @NotEmpty
-    @Email
     private String email =" ";
 
     @NotEmpty
@@ -77,4 +76,3 @@ public class Gestor extends AbstractEntity {
 
 
 }
-
