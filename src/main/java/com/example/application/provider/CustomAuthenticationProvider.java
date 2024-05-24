@@ -9,12 +9,11 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
@@ -27,22 +26,19 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        Aluno validacaoUsuario = alunoRepository.validarLogin(authentication.getName(), (String) authentication.getCredentials());
-        Gestor validacaoGestor = gestorRepository.validarLogin(authentication.getName(), (String) authentication.getCredentials());
-
+        Aluno validacaoUsuario = alunoRepository.validarLogin(authentication.getName(), (String)authentication.getCredentials());
+        Gestor validacaoGestor = gestorRepository.validarLogin(authentication.getName(), (String)authentication.getCredentials());
         if (validacaoUsuario != null || validacaoGestor != null) {
-            UserDetails user;
-            user = validacaoUsuario != null?
+            UserDetails user = validacaoUsuario != null?
                     User.withUsername(validacaoUsuario.getEmail())
                             .password(validacaoUsuario.getSenha())
-                            .authorities("ROLE_ALUNO")
+                            .authorities(new ArrayList<>())
                             .build():
                     User.withUsername(validacaoGestor.getEmail())
                             .password(validacaoGestor.getSenha())
-                            .authorities(Arrays.asList(new SimpleGrantedAuthority("ROLE_GESTOR")))
-                            .build();;
-
-            return new UsernamePasswordAuthenticationToken(user, authentication.getCredentials(), user.getAuthorities());
+                            .authorities(new ArrayList<>())
+                            .build();
+            return new UsernamePasswordAuthenticationToken(user, (String)authentication.getCredentials(), user.getAuthorities());
         } else {
             throw new AuthenticationException("Usuário ou senha inválidos") {};
         }

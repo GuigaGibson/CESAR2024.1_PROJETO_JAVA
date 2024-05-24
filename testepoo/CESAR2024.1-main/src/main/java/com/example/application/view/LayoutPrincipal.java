@@ -11,12 +11,12 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
-public class LayoutPrincipalGestor extends AppLayout {
+public class LayoutPrincipal extends AppLayout {
 
 
     private final SecurityService securityService;
 
-    public LayoutPrincipalGestor(SecurityService securityService) {
+    public LayoutPrincipal(SecurityService securityService) {
         this.securityService = securityService;
 
         createHeader(); // cria cabeçalho
@@ -58,7 +58,7 @@ public class LayoutPrincipalGestor extends AppLayout {
     private void createDrawer() {
         RouterLink homeLink = new RouterLink("Home", HomeView.class);
         RouterLink cadastroLink = new RouterLink("Cadastro de Alunos", CadastroAView.class);
-        //RouterLink eletivasLink = new RouterLink("Eletivas", EletivasView.class);
+        RouterLink eletivasLink = new RouterLink("Eletivas", EletivasView.class);
         RouterLink manipularLink = new RouterLink("Manipular Usuários", ManipularAView.class);
         RouterLink periodoLink = new RouterLink("Período de Matricula", PeriodoMatriculaView.class);
         //RouterLink relatoriosLink = new RouterLink("Relatórios", RelatorioView.class);
@@ -67,7 +67,7 @@ public class LayoutPrincipalGestor extends AppLayout {
         // Adiciona a classe CSS personalizada aos links
         homeLink.addClassName("black-link");
         cadastroLink.addClassName("black-link");
-        //eletivasLink.addClassName("black-link");
+        eletivasLink.addClassName("black-link");
         manipularLink.addClassName("black-link");
         periodoLink.addClassName("black-link");
         //relatoriosLink.addClassName("black-link");
@@ -76,7 +76,7 @@ public class LayoutPrincipalGestor extends AppLayout {
         VerticalLayout drawer = new VerticalLayout(
                 homeLink,
                 cadastroLink,
-               //eletivasLink,
+                eletivasLink,
                 manipularLink,
                 periodoLink,
                 //relatoriosLink,

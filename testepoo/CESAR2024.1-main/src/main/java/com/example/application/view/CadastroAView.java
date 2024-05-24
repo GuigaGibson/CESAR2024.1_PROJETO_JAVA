@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @PermitAll
-@Route(value = "cadastro_aluno", layout = LayoutPrincipalGestor.class)
+@Route(value = "cadastro_aluno", layout = LayoutPrincipal.class)
 @PageTitle("Alunos cadastrados | Trilhas EletivasView ")
 
 public class CadastroAView extends VerticalLayout {
