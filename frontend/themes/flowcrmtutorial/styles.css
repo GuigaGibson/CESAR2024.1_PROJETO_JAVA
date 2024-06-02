@@ -12,19 +12,22 @@ a[highlight] {
 }
 
 
+html {
+  background-color: #ffffc2;
+}
 
 html {
-  --lumo-primary-color: green;
-  --lumo-secondary-color: green;
+  --lumo-primary-color: #38761d;
+  --lumo-secondary-color: #38761d;
 
 }
 
 .cor{
-  color: white;
+  color: #ffffc2;
 }
 
 .add-navbar{
-  background-color: #22852d;
+  background-color: #38761d;
 }
 
 
@@ -57,8 +60,8 @@ html {
 }
 .eletiva-box {
   padding-top: 10px;
-  border: 1px solid #ddd;
+  border: 0px solid #ddd;
   border-radius: 5px;
-  padding: 20px;
+  padding: 15px;
   margin-bottom: 20px;
 }

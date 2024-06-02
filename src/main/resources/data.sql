@@ -21,3 +21,10 @@ INSERT INTO ALUNO (ID, VERSION, MATRICULA, NOME, EMAIL, SERIE, TURMA, SENHA) VAL
 INSERT INTO GESTOR (ID, VERSION, MATRICULA, NOME, EMAIL, SENHA) VALUES
 (1,1,'20232ADMPL0876', 'Leandro Lima', 'leandro@gmail.com', '4444');
 
+
+
+INSERT INTO eletivas (id, version, nome, descricao, professor)
+VALUES
+(1, 1, 'Jogos Digitais', 'Este curso oferece uma introdução abrangente ao design e desenvolvimento de jogos digitais. Os alunos aprenderão os princípios básicos do design de jogos, desenvolvimento de narrativas, arte e design de personagens, programação de jogos e muito mais.', 'Angela Tenório'),
+(2, 1, 'Inteligência Artificial em Jogos', 'Neste curso, os alunos explorarão o papel da inteligência artificial (IA) no desenvolvimento de jogos. Eles aprenderão sobre algoritmos de IA comuns usados em jogos, como aprendizado de máquina, algoritmos genéticos e técnicas de busca.', 'Ricardo Almeida'),
+(3, 1, 'Realidade Virtual e Aumentada', 'Este curso aborda os conceitos fundamentais de realidade virtual (RV) e realidade aumentada (RA) e como aplicá-los no desenvolvimento de jogos. Os alunos aprenderão a criar experiências imersivas usando tecnologias de RV e RA.', 'Marina Oliveira');

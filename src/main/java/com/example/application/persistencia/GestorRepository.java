@@ -1,0 +1,21 @@
+package com.example.application.persistencia;
+
+import com.example.application.entidade.Gestor;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import java.util.List;
+
+
+public interface GestorRepository extends JpaRepository<Gestor, Long> {
+
+    @Query("SELECT g FROM Gestor g WHERE g.nome LIKE %:nome%")
+    List<Gestor> search(@Param("nome") String nome);
+
+    @Query("SELECT g FROM Gestor g WHERE (g.email = :parametro OR g.matricula = :parametro) AND g.senha = :senha")
+    Gestor validarLogin(@Param("parametro") String parametro, @Param("senha") String senha);
+
+}
+
+    
