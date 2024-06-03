@@ -12,19 +12,22 @@ a[highlight] {
 }
 
 
+html {
+  background-color: #ffffc2;
+}
 
 html {
-  --lumo-primary-color: green;
-  --lumo-secondary-color: green;
+  --lumo-primary-color: #38761d;
+  --lumo-secondary-color: #38761d;
 
 }
 
 .cor{
-  color: white;
+  color: #ffffc2;
 }
 
 .add-navbar{
-  background-color: #22852d;
+  background-color: #38761d;
 }
 
 
@@ -56,9 +59,32 @@ html {
   object-fit: cover;
 }
 .eletiva-box {
-  padding-top: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 20px;
-  margin-bottom: 20px;
+  padding-top: 15px;
+  padding-left: 5px;
+  margin-bottom: 10px;
 }
+
+
+.white-box {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  width: 900px;
+
+}
+.profile-box {
+  background-color: #ffffff; /* Cor de fundo branca */
+  border: 1px solid #dddddd; /* Borda sólida cinza */
+  border-radius: 10px; /* Borda arredondada */
+  padding: 20px; /* Preenchimento interno */
+}
+
+.padding{
+  margin-top: 20px;
+  padding: 10px;
+  color: green;
+
+}
+
