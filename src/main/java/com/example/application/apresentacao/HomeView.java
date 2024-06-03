@@ -8,12 +8,12 @@ import jakarta.annotation.security.PermitAll;
 
 
 @PermitAll
-@Route(value = "homeg", layout = LayoutGestor.class)
-@PageTitle("Home | Trilhas EletivasView ")
+@Route(value = "", layout = LayoutPrincipal.class)
+@PageTitle("HomeView | Trilhas EletivasView ")
 
-public class HomeViewG extends VerticalLayout {
+public class HomeView extends VerticalLayout {
 
-    public HomeViewG() {
+    public HomeView() {
         setAlignItems(Alignment.START);
 
         Image img = new Image("images/trilhas.png", "placeholder plant");

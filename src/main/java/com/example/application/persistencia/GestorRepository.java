@@ -16,6 +16,7 @@ public interface GestorRepository extends JpaRepository<Gestor, Long> {
     @Query("SELECT g FROM Gestor g WHERE (g.email = :parametro OR g.matricula = :parametro) AND g.senha = :senha")
     Gestor validarLogin(@Param("parametro") String parametro, @Param("senha") String senha);
 
+    Gestor findByEmail(String nomeUsuario);
 }
 
     

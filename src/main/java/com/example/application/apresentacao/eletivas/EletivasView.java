@@ -1,56 +1,72 @@
 package com.example.application.apresentacao.eletivas;
 
-import com.example.application.apresentacao.LayoutPrincipal;
+import com.example.application.apresentacao.aluno.LayoutAluno;
+import com.example.application.entidade.Eletivas;
+import com.example.application.persistencia.RegistrationServiceE;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
+import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.Paragraph;
 import jakarta.annotation.security.PermitAll;
 
 @PermitAll
-@Route(value = "eletivas", layout = LayoutPrincipal.class)
-@PageTitle("Eletivas | Trilhas EletivasView ")
-public class EletivasView extends Div {
+@Route(value = "eletivas", layout = LayoutAluno.class)
+@PageTitle("Eletivas Cadastradas | Trilhas EletivasView ")
 
-    public EletivasView() {
-        // Exemplo de eletivas
-        Eletiva eletiva1 = new Eletiva("Fotografia Digital", "Nesta eletiva, os alunos aprenderão os princípios básicos da fotografia digital, incluindo composição, iluminação e edição de imagens. Além disso, explorarão o uso de câmeras digitais e softwares de edição para criar e aperfeiçoar suas próprias fotografias.\nMaria Silva");
-        Eletiva eletiva2 = new Eletiva("Introdução à Programação", "Esta eletiva oferece uma introdução ao mundo da programação de computadores. Os alunos aprenderão conceitos fundamentais de lógica de programação e desenvolverão habilidades práticas utilizando a linguagem Python para criar pequenos programas e jogos.\nJoão Pereira");
-        Eletiva eletiva3 = new Eletiva("Teatro e Expressão Corporal", "Os alunos terão a oportunidade de explorar o teatro como forma de expressão artística. Através de exercícios de expressão corporal, improvisação e leitura de textos dramáticos, os participantes desenvolverão habilidades de comunicação, criatividade e trabalho em equipe.\nAna Rodrigues");
+public class EletivasView extends VerticalLayout {
+    private VerticalLayout eletivasLayout = new VerticalLayout();
+    private RegistrationServiceE service;
 
-        // Adiciona as eletivas à tela
-        add(eletiva1, eletiva2, eletiva3);
+    public EletivasView(RegistrationServiceE service) {
+        this.service = service;
+        setSizeFull();
+        add(eletivasLayout);
+        updateList();
     }
 
-    public class Eletiva extends Div {
-        public Eletiva(String nome, String descricaoDetalhada) {
-            addClassName("eletiva-box");
+    private void updateList() {
+        eletivasLayout.removeAll();
+        service.getAllEletivas().forEach(this::addEletivaToLayout);
+    }
 
-            Paragraph nomeLabel = new Paragraph(nome);
-            Button linkButton = new Button("Detalhes");
+    private void addEletivaToLayout(Eletivas eletiva) {
+        Button detailsButton = new Button("Detalhes");
+        detailsButton.addClassName("padding");
+        detailsButton.addClickListener(e -> showDetails(eletiva));
 
-            // Cria o Dialog para mostrar mais detalhes
-            Dialog detailsDialog = new Dialog();
+        Div eletivaDiv = new Div();
+        eletivaDiv.addClassName("eletiva");
+        eletivaDiv.setText("Nome: " + eletiva.getNome());
 
-            // Divide a descrição detalhada em parágrafos usando a quebra de linha como delimitador
-            String[] descricaoPartes = descricaoDetalhada.split("\n");
-            for (String parte : descricaoPartes) {
-                detailsDialog.add(new Paragraph(parte));
-            }
+        Div whiteBox = new Div();
+        whiteBox.addClassName("white-box");
+        whiteBox.add(eletivaDiv, detailsButton);
 
-            // Cria o botão "Cadastrar"
-            Button cadastrarButton = new Button("Cadastrar");
+        eletivasLayout.add(whiteBox);
+    }
 
-            // Adiciona o botão "Cadastrar" ao Dialog
-            detailsDialog.add(cadastrarButton);
+    private void showDetails(Eletivas eletiva) {
+        Dialog dialog = new Dialog();
+        dialog.setWidth("400px");
+        dialog.setHeight("300px");
 
-            // Configura o botão para abrir o Dialog ao invés de redirecionar
-            linkButton.addClickListener(e -> detailsDialog.open());
+        VerticalLayout layout = new VerticalLayout();
+        layout.add(new Div(eletiva.getNome()));
+        layout.add(new Div("Descrição: " + eletiva.getDescricao()));
+        layout.add(new Div("Professor: " + eletiva.getProfessor()));
 
-            linkButton.addClassName("black-link");
-            add(nomeLabel, linkButton);
-        }
+        Button cadastrarButton = new Button("Inscrever-se");
+        cadastrarButton.addClassName("green-link");
+        cadastrarButton.addClassName("black-link");
+        cadastrarButton.addClickListener(event -> {
+            // Adicione sua lógica de cadastro aqui
+            dialog.close();
+        });
+
+        layout.add(cadastrarButton);
+        dialog.add(layout);
+        dialog.open();
     }
 }

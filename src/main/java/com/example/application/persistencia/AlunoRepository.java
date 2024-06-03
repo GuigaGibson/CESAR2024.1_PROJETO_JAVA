@@ -15,5 +15,6 @@ public interface AlunoRepository extends JpaRepository<Aluno, Long> {
     @Query("SELECT a FROM Aluno a WHERE (a.email = :parametro OR a.matricula = :parametro) AND a.senha = :senha")
     Aluno validarLogin(@Param("parametro") String parametro, @Param("senha") String senha);
 
+    Aluno findByEmail(String nomeUsuario);
 }
 

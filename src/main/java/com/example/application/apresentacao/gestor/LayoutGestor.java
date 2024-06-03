@@ -1,6 +1,6 @@
-package com.example.application.apresentacao;
+package com.example.application.apresentacao.gestor;
 
-import com.example.application.apresentacao.eletivas.EletivasView;
+import com.example.application.apresentacao.CadastroEView;
 import com.example.application.negocio.security.SecurityService;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
@@ -62,7 +62,7 @@ public class LayoutGestor extends AppLayout{
             RouterLink manipularLink = new RouterLink("Manipular Usuários", ManipularAView.class);
             RouterLink periodoLink = new RouterLink("Período de Matricula", PeriodoMatriculaView.class);
             //RouterLink relatoriosLink = new RouterLink("Relatórios", RelatorioView.class);
-            RouterLink perfilLink = new RouterLink("Perfil", PerfilGestorView.class);
+            RouterLink perfilLink = new RouterLink("Perfil do Gestor", PerfilGestorView.class);
 
             // Adiciona a classe CSS personalizada aos links
             homeG.addClassName("black-link");

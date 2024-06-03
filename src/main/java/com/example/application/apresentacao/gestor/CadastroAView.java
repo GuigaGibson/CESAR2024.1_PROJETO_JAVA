@@ -1,8 +1,8 @@
-package com.example.application.apresentacao;
+package com.example.application.apresentacao.gestor;
 
-import com.example.application.entidade.Eletivas;
-import com.example.application.entidade.FormCadastroE;
-import com.example.application.persistencia.RegistrationServiceE;
+import com.example.application.persistencia.RegistrationServiceA;
+import com.example.application.entidade.Aluno;
+import com.example.application.entidade.FormCadastroA;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
@@ -17,16 +17,16 @@ import jakarta.annotation.security.PermitAll;
 import java.util.stream.Collectors;
 
 @PermitAll
-@Route(value = "cadastro_eletiva", layout = LayoutGestor.class)
-@PageTitle("Eletivas Cadastradas | Trilhas EletivasView ")
+@Route(value = "cadastro_aluno", layout = LayoutGestor.class)
+@PageTitle("Alunos cadastrados | Trilhas EletivasView ")
 
-public class CadastroEView extends VerticalLayout {
-    private Grid<Eletivas> grid = new Grid<>(Eletivas.class);
+public class CadastroAView extends VerticalLayout {
+    private Grid<Aluno> grid = new Grid<>(Aluno.class);
     private TextField filterText = new TextField();
-    private FormCadastroE form = new FormCadastroE();
-    private RegistrationServiceE service;
+    private FormCadastroA form = new FormCadastroA();
+    private RegistrationServiceA service;
 
-    public CadastroEView(RegistrationServiceE service) {
+    public CadastroAView(RegistrationServiceA service) {
         this.service = service;
         addClassName("list-apresentacao");
         setSizeFull();
@@ -58,12 +58,14 @@ public class CadastroEView extends VerticalLayout {
     private void configureGrid() {
         grid.addClassNames("contact-grid");
         grid.setSizeFull();
-        grid.setColumns("nome", "descricao","professor");
+        grid.setColumns("matricula", "nome","email", "senha", "serie", "turma","eletiva");
+        grid.getColumnByKey("matricula").setHeader("Matrícula");
         grid.getColumnByKey("nome").setHeader("Nome");
-        grid.getColumnByKey("descricao").setHeader("Descricao");
-        grid.getColumnByKey("professor").setHeader("Professor");
-
-
+        grid.getColumnByKey("email").setHeader("Email");
+        grid.getColumnByKey("senha").setHeader("Senha");
+        grid.getColumnByKey("serie").setHeader("Serie");
+        grid.getColumnByKey("turma").setHeader("Turma");
+        grid.getColumnByKey("eletiva").setHeader("Eletiva");
 
 
 
@@ -81,7 +83,7 @@ public class CadastroEView extends VerticalLayout {
         filterText.setValueChangeMode(ValueChangeMode.LAZY);
         filterText.addValueChangeListener(e -> updateList());
 
-        Button addContactButton = new Button("Adicionar eletiva");
+        Button addContactButton = new Button("Adicionar aluno");
         addContactButton.addClassName("black-link");
         addContactButton.addClickListener(click -> addContact());
 
@@ -90,11 +92,11 @@ public class CadastroEView extends VerticalLayout {
         return toolbar;
     }
 
-    public void editContact(Eletivas eletiva) {
-        if (eletiva == null) {
+    public void editContact(Aluno aluno) {
+        if (aluno == null) {
             closeEditor();
         } else {
-            form.setContact(eletiva);
+            form.setContact(aluno);
             form.setVisible(true);
             addClassName("editing");
         }
@@ -108,26 +110,26 @@ public class CadastroEView extends VerticalLayout {
 
     private void addContact() {
         grid.asSingleSelect().clear();
-        editContact(new Eletivas());
+        editContact(new Aluno());
     }
 
     private void updateList() {
         String filter = filterText.getValue().toLowerCase().trim(); // Obtém o valor do filtro e o normaliza
 
         // Define os alunos filtrados diretamente no Grid, aplicando o filtro ao obter a lista do serviço
-        grid.setItems(service.getAllEletivas().stream()
-                .filter(eletiva -> eletiva.getNome().toLowerCase().contains(filter))
+        grid.setItems(service.getAllAlunos().stream()
+                .filter(aluno -> aluno.getNome().toLowerCase().contains(filter))
                 .collect(Collectors.toList()));
     }
 
 
-    private void saveContact(FormCadastroE.SaveEvent event) {
+    private void saveContact(FormCadastroA.SaveEvent event) {
         service.register(event.getContact());
         updateList();
         closeEditor();
     }
 
-    private void deleteContact(FormCadastroE.DeleteEvent event) {
+    private void deleteContact(FormCadastroA.DeleteEvent event) {
         service.delete(event.getContact());
         updateList();
         closeEditor();

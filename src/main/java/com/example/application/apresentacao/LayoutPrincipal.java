@@ -1,6 +1,7 @@
 package com.example.application.apresentacao;
 
-import com.example.application.apresentacao.eletivas.EletivasView;
+import com.example.application.apresentacao.aluno.HomeViewA;
+import com.example.application.apresentacao.gestor.HomeViewG;
 import com.example.application.negocio.security.SecurityService;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
@@ -57,8 +58,8 @@ public class LayoutPrincipal extends AppLayout {
     }
 
     private void createDrawer() {
-        RouterLink homeA = new RouterLink("Aluno", HomeViewA.class);
-        RouterLink homeG = new RouterLink("Gestor", HomeViewG.class);
+        RouterLink homeA = new RouterLink("Sou Aluno", HomeViewA.class);
+        RouterLink homeG = new RouterLink("Sou Gestor", HomeViewG.class);
         // Adiciona a classe CSS personalizada aos links
         homeA.addClassName("black-link");
         homeG.addClassName("black-link");

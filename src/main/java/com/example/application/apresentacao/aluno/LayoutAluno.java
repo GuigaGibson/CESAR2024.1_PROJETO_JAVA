@@ -1,4 +1,7 @@
-package com.example.application.apresentacao;
+package com.example.application.apresentacao.aluno;
+
+
+
 
 import com.example.application.apresentacao.eletivas.EletivasView;
 import com.example.application.negocio.security.SecurityService;
@@ -9,7 +12,6 @@ import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.router.Router;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
