@@ -14,7 +14,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 @PermitAll
 @Route(value = "perfilG", layout = LayoutGestor.class)
-
 public class PerfilGestorView extends VerticalLayout {
 
     private final GestorRepository gestorRepository;

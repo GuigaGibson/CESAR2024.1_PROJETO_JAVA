@@ -35,9 +35,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
             user = validacaoUsuario != null?
                     User.withUsername(validacaoUsuario.getEmail())
                             .password(validacaoUsuario.getSenha())
-                            .authorities(Arrays.asList(validacaoUsuario.isPrimeiroLogin()
-                                 ?new SimpleGrantedAuthority("ROLE_TROCAR_SENHA")
-                                 :new SimpleGrantedAuthority("ROLE_ALUNO")))
+                            .authorities(Arrays.asList(new SimpleGrantedAuthority("ROLE_TROCAR_SENHA")))
                             .build():
                     User.withUsername(validacaoGestor.getEmail())
                             .password(validacaoGestor.getSenha())

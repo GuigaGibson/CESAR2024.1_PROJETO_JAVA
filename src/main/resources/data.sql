@@ -21,21 +21,18 @@ INSERT INTO ALUNO (ID, VERSION, MATRICULA, NOME, EMAIL, SERIE, TURMA, SENHA) VAL
 INSERT INTO GESTOR (ID, VERSION, MATRICULA, NOME, EMAIL, SENHA) VALUES
 (1,1,'20232ADMPL0876', 'Leandro Lima', 'leandro@gmail.com', '4444');
 
-
-
-INSERT INTO eletivas (id, version, nome, descricao, professor)
-VALUES
-(16,1,'Fotografia Digital', 'Nesta eletiva, os alunos aprenderão os princípios básicos da fotografia digital, incluindo composição, iluminação e edição de imagens. Além disso, explorarão o uso de câmeras digitais e softwares de edição para aperfeiçoar suas próprias fotografias.', 'Maria Silva'),
-(1, 1, 'Jogos Digitais', 'Este curso oferece uma introdução abrangente ao design e desenvolvimento de jogos digitais. Os alunos aprenderão os princípios básicos do design de jogos, desenvolvimento de narrativas, arte e design de personagens, programação de jogos e muito mais.', 'Angela Tenório'),
-(2, 1, 'Inteligência Artificial em Jogos', 'Neste curso, os alunos explorarão o papel da inteligência artificial (IA) no desenvolvimento de jogos. Eles aprenderão sobre algoritmos de IA comuns usados em jogos, como aprendizado de máquina, algoritmos genéticos e técnicas de busca.', 'Ricardo Almeida'),
-(3, 1, 'Realidade Virtual e Aumentada', 'Este curso aborda os conceitos fundamentais de realidade virtual (RV) e realidade aumentada (RA) e como aplicá-los no desenvolvimento de jogos. Os alunos aprenderão a criar experiências imersivas usando tecnologias de RV e RA.', 'Marina Oliveira'),
-(4, 1, 'Desenvolvimento Web', 'Princípios básicos do desenvolvimento web: HTML, CSS, JavaScript e frameworks como React e Angular.', 'Pedro Santos'),
-(5, 1, 'Desenvolvimento Mobile', 'Introdução ao desenvolvimento de aplicativos móveis para Android e iOS usando Android Studio e Xcode.', 'Luciana Lima'),
-(6, 1, 'Data Science', 'Introdução à ciência de dados: coleta, análise e interpretação de dados usando Python e bibliotecas como Pandas e NumPy.', 'Gustavo Silva'),
-(7, 2, 'Marketing Digital', 'Fundamentos do marketing digital: mídias sociais, SEO, PPC e análise de dados para campanhas eficazes online.', 'Carolina Souza'),
-(8, 2, 'Gestão de Projetos', 'Princípios da gestão de projetos: planejamento, execução, controle e metodologias ágeis como Scrum e Kanban.', 'Gabriel Oliveira'),
-(9, 2, 'Empreendedorismo', 'Introdução ao empreendedorismo: identificação de oportunidades, desenvolvimento de planos de negócios e lançamento de startups.', 'Amanda Costa'),
-(10, 3, 'Gestão de RH', 'Conceitos básicos de gestão de recursos humanos: recrutamento, seleção, treinamento e desenvolvimento de funcionários.', 'Rafaela Santos'),
-(11, 3, 'Liderança e Decisão', 'Princípios da liderança e tomada de decisões: habilidades de liderança, comunicação e resolução de problemas.', 'Lucas Oliveira'),
-(12, 3, 'Negociação e Conflito', 'Estratégias de negociação e resolução de conflitos: habilidades para negociar acordos e resolver disputas de forma construtiva.', 'Ana Maria Rodrigues'),
-(13, 4, 'Arquitetura Sustentável', 'Princípios da arquitetura sustentável e design verde: projetando edifícios e espaços urbanos ambientalmente responsáveis e energeticamente eficientes.', 'José da Silva');
+INSERT INTO eletivas (id, version, nome, descricao, professor, vagas_disponiveis) VALUES
+(16, 1, 'Fotografia Digital', 'Curso básico de fotografia digital, incluindo composição, iluminação e edição.', 'Maria Silva', 30),
+(1, 1, 'Jogos Digitais', 'Curso introdutório ao design e desenvolvimento de jogos digitais.', 'Angela Tenório', 25),
+(2, 1, 'IA em Jogos', 'Exploração de IA no desenvolvimento de jogos, incluindo aprendizado de máquina e algoritmos genéticos.', 'Ricardo Almeida', 20),
+(3, 1, 'RV e RA', 'Conceitos de realidade virtual e aumentada no desenvolvimento de jogos.', 'Marina Oliveira', 15),
+(4, 1, 'Desenvolvimento Web', 'Princípios básicos de desenvolvimento web: HTML, CSS, JavaScript e frameworks.', 'Pedro Santos', 10),
+(5, 1, 'Desenvolvimento Mobile', 'Introdução ao desenvolvimento de aplicativos móveis para Android e iOS.', 'Luciana Lima', 20),
+(6, 1, 'Data Science', 'Introdução à ciência de dados: coleta, análise e interpretação de dados.', 'Gustavo Silva', 30),
+(7, 2, 'Marketing Digital', 'Fundamentos do marketing digital: mídias sociais, SEO, PPC e análise de dados.', 'Carolina Souza', 25),
+(8, 2, 'Gestão de Projetos', 'Princípios de gestão de projetos: planejamento, execução, controle e metodologias ágeis.', 'Gabriel Oliveira', 20),
+(9, 2, 'Empreendedorismo', 'Introdução ao empreendedorismo: identificação de oportunidades e desenvolvimento de planos de negócios.', 'Amanda Costa', 15),
+(10, 3, 'Gestão de RH', 'Conceitos básicos de gestão de recursos humanos: recrutamento, seleção e treinamento.', 'Rafaela Santos', 10),
+(11, 3, 'Liderança e Decisão', 'Princípios de liderança e tomada de decisões: habilidades de liderança, comunicação e resolução de problemas.', 'Lucas Oliveira', 30),
+(12, 3, 'Negociação e Conflito', 'Estratégias de negociação e resolução de conflitos.', 'Ana Maria Rodrigues', 25),
+(13, 4, 'Arquitetura Sustentável', 'Princípios da arquitetura sustentável e design verde.', 'José da Silva', 20);

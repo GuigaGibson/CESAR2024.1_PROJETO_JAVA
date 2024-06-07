@@ -2,6 +2,7 @@ package com.example.application.apresentacao.aluno;
 
 import com.example.application.apresentacao.aluno.LayoutAluno;
 import com.example.application.entidade.Aluno;
+import com.example.application.entidade.Eletivas;
 import com.example.application.persistencia.AlunoRepository;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -12,9 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import java.util.List;
+
 @PermitAll
 @Route(value = "perfilA", layout = LayoutAluno.class)
-
 public class PerfilAlunoView extends VerticalLayout {
 
     private final AlunoRepository alunoRepository;
@@ -23,14 +25,11 @@ public class PerfilAlunoView extends VerticalLayout {
     public PerfilAlunoView(AlunoRepository alunoRepository) {
         this.alunoRepository = alunoRepository;
 
-        // Obtendo as informações do usuário autenticado no momento
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String nomeUsuario = authentication.getName(); // Nome de usuário
+        String nomeUsuario = authentication.getName();
 
-        // Obtendo as informações do aluno do banco de dados
         Aluno aluno = alunoRepository.findByEmail(nomeUsuario);
 
-        // Componentes para exibir as informações do perfil
         TextField nomeField = new TextField("Nome");
         nomeField.setValue(aluno.getNome());
         nomeField.setReadOnly(true);
@@ -43,26 +42,35 @@ public class PerfilAlunoView extends VerticalLayout {
         emailField.setValue(aluno.getEmail());
         emailField.setReadOnly(true);
 
-        TextField senhaField= new TextField("Senha");
+        TextField senhaField = new TextField("Senha");
         senhaField.setValue(aluno.getSenha());
         senhaField.setReadOnly(true);
 
-        // Componente para a foto do aluno
+        VerticalLayout eletivasLayout = new VerticalLayout();
+        eletivasLayout.setDefaultHorizontalComponentAlignment(Alignment.STRETCH);
+
+        Eletivas eletiva = alunoRepository.findEletivaByAlunoId(aluno.getId());
+        if (eletiva != null) {
+
+                TextField eletivaField = new TextField("Eletiva: " + eletiva.getNome());
+                eletivaField.setValue(eletiva.getDescricao());
+                eletivaField.setReadOnly(true);
+                eletivasLayout.add(eletivaField);
+
+        }
+
         Image fotoAluno = new Image("images/perfil.png", "Foto do Aluno");
         fotoAluno.setWidth("200px");
         fotoAluno.setHeight("200px");
 
-        // Layout para organizar os componentes
-        VerticalLayout innerLayout = new VerticalLayout(fotoAluno, nomeField, matriculaField, emailField, senhaField);
+        VerticalLayout innerLayout = new VerticalLayout(fotoAluno, nomeField, matriculaField, emailField, senhaField, eletivasLayout);
         innerLayout.setDefaultHorizontalComponentAlignment(Alignment.CENTER);
         innerLayout.setSpacing(true);
         innerLayout.setPadding(true);
         innerLayout.setSizeFull();
 
-        // Adiciona a classe CSS para a caixa branca
         innerLayout.addClassName("profile-box");
 
-        // Adiciona o layout do perfil dentro de uma caixa branca
         add(innerLayout);
     }
 }
