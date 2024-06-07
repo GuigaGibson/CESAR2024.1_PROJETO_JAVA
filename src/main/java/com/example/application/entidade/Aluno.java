@@ -1,8 +1,11 @@
 package com.example.application.entidade;
 
 import com.vaadin.flow.component.textfield.TextField;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -24,15 +27,12 @@ public class Aluno extends AbstractEntity {
     @NotEmpty
     private String turma;
 
-
-    private String eletiva = " ";
-
     @NotEmpty
     private String senha = " ";
 
-    //@NotEmpty
-    // private boolean primeiroLogin = true;
-
+    @ManyToOne
+    @JoinColumn(name = "eletiva_id")
+    private Eletivas eletiva;
 
     public Aluno() {
         this.matricula = matricula;
@@ -40,13 +40,9 @@ public class Aluno extends AbstractEntity {
         this.email = email;
         this.serie = serie;
         this.turma = turma;
-        this.eletiva = eletiva;
         this.senha = senha;
-        // this.primeiroLogin = primeiroLogin;
     }
 
-
-    ///
     public String getMatricula() {
         return matricula;
     }
@@ -55,8 +51,6 @@ public class Aluno extends AbstractEntity {
         this.matricula = matricula;
     }
 
-
-    ///
     public String getNome() {
         return nome;
     }
@@ -65,8 +59,6 @@ public class Aluno extends AbstractEntity {
         this.nome = nome;
     }
 
-
-    ///
     public String getEmail() {
         return email;
     }
@@ -75,8 +67,6 @@ public class Aluno extends AbstractEntity {
         this.email = email;
     }
 
-
-    ///
     public String getSerie() {
         return serie;
     }
@@ -85,8 +75,6 @@ public class Aluno extends AbstractEntity {
         this.serie = serie;
     }
 
-
-    ///
     public String getTurma() {
         return turma;
     }
@@ -95,18 +83,6 @@ public class Aluno extends AbstractEntity {
         this.turma = turma;
     }
 
-
-    ///
-    public String getEletiva() {
-        return eletiva;
-    }
-
-    public void setEletiva(String eletiva) {
-        this.eletiva = eletiva;
-    }
-
-
-    ///
     public String getSenha() {
         return senha;
     }
@@ -115,14 +91,11 @@ public class Aluno extends AbstractEntity {
         this.senha = senha;
     }
 
-    public boolean isPrimeiroLogin() {
-        return true;
-
+    public Eletivas getEletiva() {
+        return eletiva;
     }
 
-
-    //public void setPrimeiroLogin(boolean primeiroLogin) {
-    //    this.primeiroLogin = primeiroLogin;
-    //}
-
+    public void setEletiva(Eletivas eletiva) {
+        this.eletiva = eletiva;
+    }
 }

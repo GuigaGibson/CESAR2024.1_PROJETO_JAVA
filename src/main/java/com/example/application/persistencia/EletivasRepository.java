@@ -13,4 +13,7 @@ public interface EletivasRepository extends JpaRepository <Eletivas , Long>{
     @Query("SELECT a FROM Eletivas a WHERE a.nome LIKE %:nome%")
     List<Eletivas> search(@Param("nome") String nome);
 
+    @Query("SELECT e.alunos FROM Eletivas e WHERE e.id = :eletivaId")
+    List<Aluno> findAlunosByEletivaId(@Param("eletivaId") Long eletivaId);
+
 }

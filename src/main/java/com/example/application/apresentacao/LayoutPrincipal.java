@@ -1,8 +1,11 @@
 package com.example.application.apresentacao;
 
 import com.example.application.apresentacao.aluno.HomeViewA;
+import com.example.application.apresentacao.aluno.LayoutAluno;
 import com.example.application.apresentacao.gestor.HomeViewG;
+import com.example.application.apresentacao.gestor.LayoutGestor;
 import com.example.application.negocio.security.SecurityService;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.button.Button;
@@ -10,8 +13,12 @@ import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.page.Page;
 import com.vaadin.flow.router.RouterLink;
+import com.vaadin.flow.server.VaadinSession;
 import com.vaadin.flow.theme.lumo.LumoUtility;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 public class LayoutPrincipal extends AppLayout {
 
@@ -58,21 +65,10 @@ public class LayoutPrincipal extends AppLayout {
     }
 
     private void createDrawer() {
-        RouterLink homeA = new RouterLink("Sou Aluno", HomeViewA.class);
-        RouterLink homeG = new RouterLink("Sou Gestor", HomeViewG.class);
-        // Adiciona a classe CSS personalizada aos links
-        homeA.addClassName("black-link");
-        homeG.addClassName("black-link");
-
-
-        VerticalLayout drawer = new VerticalLayout(
-                homeA,
-                homeG
-                //relatoriosLink,
-
-        );
-
-        // Adiciona o drawer ao layout principal
-        addToDrawer(drawer);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        VaadinSession.getCurrent().access(() -> {
+            if(authentication.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_TROCAR_SENHA"))) UI.getCurrent().getPage().executeJs("window.location.href=$0", new RouterLink("Sou Aluno", HomeViewA.class).getHref());
+            else UI.getCurrent().getPage().executeJs("window.location.href=$0", new RouterLink("Sou Gestor", HomeViewG.class).getHref());
+        });
     }
 }
