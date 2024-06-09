@@ -94,3 +94,17 @@ html {
     padding: 10px;
     margin-bottom: 10px;
 }
+
+/* Estilo para os botões de exportação */
+.export-button {
+  background-color: green;
+  color: white;
+}
+
+/* Estilo para o link de download */
+.conf {
+  color: black;
+}
+
+
+
