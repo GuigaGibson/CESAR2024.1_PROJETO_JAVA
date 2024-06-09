@@ -1,6 +1,6 @@
 package com.example.application.apresentacao.gestor;
 
-import com.example.application.apresentacao.CadastroEView;
+import com.example.application.apresentacao.gestor.CadastroEView;
 import com.example.application.negocio.security.SecurityService;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
@@ -78,8 +78,10 @@ public class LayoutGestor extends AppLayout{
                 cadastroLink,
                 cadastroELink,
                 manipularLink,
+
                 periodoLink,
                 relatoriosLink,
+
                 perfilLink
         );
 
