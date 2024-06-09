@@ -88,3 +88,9 @@ html {
 
 }
 
+.mensagem-erro {
+    border: 1px solid red;
+    color: red;
+    padding: 10px;
+    margin-bottom: 10px;
+}

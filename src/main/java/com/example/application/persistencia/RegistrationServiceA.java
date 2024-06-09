@@ -21,7 +21,7 @@ public class RegistrationServiceA {
 
 
     public List<String> getSerie() {
-        return Arrays.asList("1 ANO", "2 ANO", "3 ANO"); // setar os valores do combox serie
+        return Arrays.asList("1° ANO", "2° ANO", "3° ANO"); // setar os valores do combox serie
     }
 
     public List<String> getTurma() {
