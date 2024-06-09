@@ -61,7 +61,7 @@ public class LayoutGestor extends AppLayout{
         RouterLink cadastroELink = new RouterLink("Cadastro de Eletivas", CadastroEView.class);
         RouterLink manipularLink = new RouterLink("Manipular Usuários", ManipularAView.class);
         RouterLink periodoLink = new RouterLink("Período de Matricula", PeriodoMatriculaView.class);
-        RouterLink relatoriosLink = new RouterLink("Relatórios", RelatorioView.class);
+        RouterLink relatoriosLink = new RouterLink("Relatórios", RelatoriosView.class);
         RouterLink perfilLink = new RouterLink("Perfil do Gestor", PerfilGestorView.class);
 
         // Adiciona a classe CSS personalizada aos links
