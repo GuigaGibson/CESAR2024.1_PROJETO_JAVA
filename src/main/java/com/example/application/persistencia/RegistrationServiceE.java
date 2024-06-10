@@ -37,4 +37,3 @@ public class RegistrationServiceE {
         return repositoryE.findAlunosByEletivaId(eletivaId);
     }
 }
-
