@@ -88,7 +88,7 @@ public class Eletivas extends AbstractEntity {
 
 
 
-        return nome;
+    
     }
 
-}
+
