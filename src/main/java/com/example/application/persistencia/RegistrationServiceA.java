@@ -25,7 +25,6 @@ public class RegistrationServiceA {
     @Autowired
     private EletivasRepository eletivasRepository;
 
-
     public boolean verificarPeriodoMatricula() {
         LocalDate hoje = LocalDate.now();
         List<PeriodoMatricula> periodo = periodoMatriculaRepository.findAll();
@@ -73,7 +72,6 @@ public class RegistrationServiceA {
             if (eletivaAtual != null && eletivaAtual.equals(novaEletiva)) {
                 throw new IllegalStateException("O aluno já está matriculado nesta eletiva");
             }
-            verificarPeriodoMatricula();
 
             if (eletivaAtual != null) {
                 eletivaAtual.getAlunos().remove(aluno);
@@ -91,6 +89,5 @@ public class RegistrationServiceA {
             throw new IllegalStateException("Não há vagas disponíveis para esta eletiva");
         }
     }
-
 
 }
