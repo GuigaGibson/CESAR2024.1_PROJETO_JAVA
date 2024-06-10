@@ -25,7 +25,6 @@ public class FormCadastroE extends FormLayout {
     private final TextField vagasDisponiveis = new TextField("Vagas Disponíveis");
     private final ComboBox<String> serie = new ComboBox<>("Série");
 
-
     private final Button save = new Button("Salvar");
     private final Button delete = new Button("Deletar");
     private final Button close = new Button("Cancelar");
@@ -39,7 +38,6 @@ public class FormCadastroE extends FormLayout {
         serie.setPlaceholder("Selecione a série");
 
         add(nome, descricao, professor, vagasDisponiveis, serie, createButtonsLayout());
-
     }
 
     private Component createButtonsLayout() {
