@@ -1,8 +1,8 @@
 package com.example.application.apresentacao.gestor;
 
+import com.example.application.entidade.forms.FormCadastroA2;
 import com.example.application.persistencia.RegistrationServiceA;
 import com.example.application.entidade.Aluno;
-import com.example.application.entidade.FormCadastroA;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 public class CadastroAView extends VerticalLayout {
     private Grid<Aluno> grid = new Grid<>(Aluno.class);
     private TextField filterText = new TextField();
-    private FormCadastroA form = new FormCadastroA();
+    private FormCadastroA2 form = new FormCadastroA2();
     private RegistrationServiceA service;
 
     public CadastroAView(RegistrationServiceA service) {
@@ -51,7 +51,6 @@ public class CadastroAView extends VerticalLayout {
     private void configureForm() {
         form.setWidth("25em");
         form.addSaveListener(this::saveContact);
-        form.addDeleteListener(this::deleteContact);
         form.addCloseListener(e -> closeEditor());
     }
 
@@ -123,15 +122,10 @@ public class CadastroAView extends VerticalLayout {
     }
 
 
-    private void saveContact(FormCadastroA.SaveEvent event) {
+    private void saveContact(FormCadastroA2.SaveEvent event) {
         service.register(event.getContact());
         updateList();
         closeEditor();
     }
 
-    private void deleteContact(FormCadastroA.DeleteEvent event) {
-        service.delete(event.getContact());
-        updateList();
-        closeEditor();
-    }
 }
