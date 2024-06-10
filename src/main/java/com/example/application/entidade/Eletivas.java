@@ -1,6 +1,5 @@
 package com.example.application.entidade;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotEmpty;
@@ -78,17 +77,6 @@ public class Eletivas extends AbstractEntity {
 
     @Override
     public String toString() {
-
-        return "Eletivas{" +
-                "nome='" + nome + '\'' +
-                ", descricao='" + descricao + '\'' +
-                ", professor='" + professor + '\'' +
-                '}';
+        return nome;
     }
-
-
-
-    
-    }
-
-
+}
