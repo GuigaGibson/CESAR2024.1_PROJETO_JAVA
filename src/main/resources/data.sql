@@ -27,7 +27,6 @@ INSERT INTO PERIODO_MATRICULA (ID, VERSION, DATA_INICIO, DATA_FIM) VALUES
 
 
 INSERT INTO eletivas (id, version, nome, descricao, professor, vagas_disponiveis, serie) VALUES
-(16, 1, 'Fotografia Digital', 'Curso básico de fotografia digital, incluindo composição, iluminação e edição.', 'Maria Silva', 30, '1° ANO'),
 (1, 1, 'Jogos Digitais', 'Curso introdutório ao design e desenvolvimento de jogos digitais.', 'Angela Tenório', 25, '2° ANO'),
 (2, 1, 'IA em Jogos', 'Exploração de IA no desenvolvimento de jogos, incluindo aprendizado de máquina e algoritmos genéticos.', 'Ricardo Almeida', 20, '3° ANO'),
 (3, 1, 'RV e RA', 'Conceitos de realidade virtual e aumentada no desenvolvimento de jogos.', 'Marina Oliveira', 15, '1° ANO'),
@@ -40,5 +39,5 @@ INSERT INTO eletivas (id, version, nome, descricao, professor, vagas_disponiveis
 (10, 3, 'Gestão de RH', 'Conceitos básicos de gestão de recursos humanos: recrutamento, seleção e treinamento.', 'Rafaela Santos', 10, '2° ANO'),
 (11, 3, 'Liderança e Decisão', 'Princípios de liderança e tomada de decisões: habilidades de liderança, comunicação e resolução de problemas.', 'Lucas Oliveira', 30, '3° ANO'),
 (12, 3, 'Negociação e Conflito', 'Estratégias de negociação e resolução de conflitos.', 'Ana Maria Rodrigues', 25, '1° ANO'),
-(13, 4, 'Arquitetura Sustentável', 'Princípios da arquitetura sustentável e design verde.', 'José da Silva', 20, '2° ANO');
-
+(13, 4, 'Arquitetura Sustentável', 'Princípios da arquitetura sustentável e design verde.', 'José da Silva', 20, '2° ANO'),
+(14, 1, 'Fotografia Digital', 'Curso básico de fotografia digital, incluindo composição, iluminação e edição.', 'Maria Silva', 30, '1° ANO');
