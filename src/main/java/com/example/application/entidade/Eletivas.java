@@ -2,7 +2,6 @@ package com.example.application.entidade;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotEmpty;
 
@@ -10,8 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Eletivas  extends AbstractEntity{
-
+public class Eletivas extends AbstractEntity {
 
     @NotEmpty
     private String nome = "";
@@ -23,6 +21,9 @@ public class Eletivas  extends AbstractEntity{
     private String professor = "";
 
     private int vagasDisponiveis;
+
+    @NotEmpty
+    private String serie = ""; // Nova propriedade
 
     @OneToMany(mappedBy = "eletiva")
     private List<Aluno> alunos = new ArrayList<>();
@@ -48,7 +49,7 @@ public class Eletivas  extends AbstractEntity{
     }
 
     public void setProfessor(String professor) {
-        this.professor= professor;
+        this.professor = professor;
     }
 
     public int getVagasDisponiveis() {
@@ -57,6 +58,14 @@ public class Eletivas  extends AbstractEntity{
 
     public void setVagasDisponiveis(int vagasDisponiveis) {
         this.vagasDisponiveis = vagasDisponiveis;
+    }
+
+    public String getSerie() {
+        return serie;
+    }
+
+    public void setSerie(String serie) {
+        this.serie = serie;
     }
 
     public List<Aluno> getAlunos() {
@@ -69,6 +78,7 @@ public class Eletivas  extends AbstractEntity{
 
     @Override
     public String toString() {
+
         return "Eletivas{" +
                 "nome='" + nome + '\'' +
                 ", descricao='" + descricao + '\'' +
@@ -77,5 +87,8 @@ public class Eletivas  extends AbstractEntity{
     }
 
 
+
+        return nome;
+    }
 
 }

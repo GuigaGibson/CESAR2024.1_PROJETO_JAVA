@@ -60,7 +60,12 @@ public class LayoutGestor extends AppLayout{
         RouterLink cadastroLink = new RouterLink("Cadastro de Alunos", CadastroAView.class);
         RouterLink cadastroELink = new RouterLink("Cadastro de Eletivas", CadastroEView.class);
         RouterLink manipularLink = new RouterLink("Manipular Usuários", ManipularAView.class);
+
         RouterLink periodoLink = new RouterLink("Período de Matricula", CadastroPView.class);
+
+        RouterLink periodoLink = new RouterLink("Período de Matricula", PeriodoMatriculaView.class);
+        RouterLink relatoriosLink = new RouterLink("Relatórios", RelatoriosView.class);
+
         RouterLink perfilLink = new RouterLink("Perfil do Gestor", PerfilGestorView.class);
 
         // Adiciona a classe CSS personalizada aos links
@@ -69,6 +74,9 @@ public class LayoutGestor extends AppLayout{
         cadastroELink.addClassName("black-link");
         manipularLink.addClassName("black-link");
         periodoLink.addClassName("black-link");
+
+        relatoriosLink.addClassName("black-link");
+
         perfilLink.addClassName("black-link");
         periodoLink.addClassName("black-link");
 
@@ -77,7 +85,11 @@ public class LayoutGestor extends AppLayout{
                 cadastroLink,
                 cadastroELink,
                 manipularLink,
+
                 periodoLink,
+
+                relatoriosLink,
+
                 perfilLink
         );
 

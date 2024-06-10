@@ -6,6 +6,7 @@ import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -21,7 +22,12 @@ public class FormCadastroE extends FormLayout {
     private final TextField nome = new TextField("Nome");
     private final TextField descricao = new TextField("Descrição");
     private final TextField professor = new TextField("Professor");
+
     private final TextField quantidade = new TextField("Quantidade");
+
+    private final TextField vagasDisponiveis = new TextField("Vagas Disponíveis");
+    private final ComboBox<String> serie = new ComboBox<>("Série");
+
 
     private final Button save = new Button("Salvar");
     private final Button delete = new Button("Deletar");
@@ -30,7 +36,16 @@ public class FormCadastroE extends FormLayout {
     public FormCadastroE() {
         addClassName("eletiva-form");
         binder.bindInstanceFields(this);
+
         add(nome, descricao, professor,quantidade, createButtonsLayout());
+
+
+        // Configure ComboBox
+        serie.setItems("1° ANO", "2° ANO", "3° ANO");
+        serie.setPlaceholder("Selecione a série");
+
+        add(nome, descricao, professor, vagasDisponiveis, serie, createButtonsLayout());
+
     }
 
     private Component createButtonsLayout() {

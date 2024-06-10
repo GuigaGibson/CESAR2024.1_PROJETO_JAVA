@@ -21,7 +21,6 @@ import java.util.stream.Collectors;
 @PermitAll
 @Route(value = "cadastro_eletiva", layout = LayoutGestor.class)
 @PageTitle("Eletivas Cadastradas | Trilhas EletivasView ")
-
 public class CadastroEView extends VerticalLayout {
     private Grid<Eletivas> grid = new Grid<>(Eletivas.class);
     private TextField filterText = new TextField();
@@ -37,10 +36,12 @@ public class CadastroEView extends VerticalLayout {
         add(getTitle(), getToolbar(), getContent());
         updateList();
         closeEditor();
+
     }
 
     private H2 getTitle() {
         return new H2("Cadastro de eletivas");
+
     }
 
     private HorizontalLayout getContent() {
@@ -62,10 +63,13 @@ public class CadastroEView extends VerticalLayout {
     private void configureGrid() {
         grid.addClassNames("contact-grid");
         grid.setSizeFull();
-        grid.setColumns("nome", "descricao","professor");
+        grid.setColumns("nome", "descricao", "professor", "serie"); // Adiciona a coluna "serie"
         grid.getColumnByKey("nome").setHeader("Nome");
-        grid.getColumnByKey("descricao").setHeader("Descricao");
+        grid.getColumnByKey("descricao").setHeader("Descrição");
         grid.getColumnByKey("professor").setHeader("Professor");
+
+        grid.getColumnByKey("serie").setHeader("Série"); // Define o cabeçalho da coluna "serie"
+
 
         grid.getColumns().forEach(col -> col.setAutoWidth(true));
 

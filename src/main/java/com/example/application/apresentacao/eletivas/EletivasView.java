@@ -2,6 +2,7 @@ package com.example.application.apresentacao.eletivas;
 
 import com.example.application.apresentacao.aluno.LayoutAluno;
 import com.example.application.entidade.Eletivas;
+import com.example.application.entidade.Aluno;
 import com.example.application.persistencia.AlunoRepository;
 import com.example.application.persistencia.RegistrationServiceA;
 import com.example.application.persistencia.RegistrationServiceE;
@@ -15,10 +16,10 @@ import jakarta.annotation.security.PermitAll;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+
 @PermitAll
 @Route(value = "eletivas", layout = LayoutAluno.class)
 @PageTitle("Eletivas Cadastradas | Trilhas EletivasView ")
-
 public class EletivasView extends VerticalLayout {
     private VerticalLayout eletivasLayout = new VerticalLayout();
     private RegistrationServiceE service;
@@ -65,25 +66,41 @@ public class EletivasView extends VerticalLayout {
         dialog.setHeight("300px");
 
         VerticalLayout layout = new VerticalLayout();
-        layout.add(new Div(eletiva.getNome()));
+        layout.add(new Div("Nome: " + eletiva.getNome()));
         layout.add(new Div("Descrição: " + eletiva.getDescricao()));
         layout.add(new Div("Professor: " + eletiva.getProfessor()));
-        layout.add(new Div("Quantidade: " + eletiva.getVagasDisponiveis()));
+        layout.add(new Div("Série: " + eletiva.getSerie())); // Adicionando a série da disciplina
 
-        Button cadastrarButton = new Button("Inscrever-se");
-        cadastrarButton.addClassName("green-link");
-        cadastrarButton.addClassName("black-link");
-        cadastrarButton.addClickListener(event -> {
-            try {
-                alunoService.matricularAlunoEmEletiva(alunoRepository.findByEmail(alunoAutenticado.getName()).getId(), eletiva.getId());
-                sucessoAoMatricular();
-            } catch (Exception e) {
-                erroAoMatricular(e.getMessage());
-            }
-            dialog.close();
-        });
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String email = auth.getName();
+        Aluno aluno = alunoRepository.findByEmail(email);
 
-        layout.add(cadastrarButton);
+        if (aluno.getSerie() == eletiva.getSerie()) {
+            Button cadastrarButton = new Button("Inscrever-se");
+            cadastrarButton.addClassName("green-link");
+            cadastrarButton.addClassName("black-link");
+            cadastrarButton.addClickListener(event -> {
+                try {
+                    alunoService.matricularAlunoEmEletiva(aluno.getId(), eletiva.getId());
+                    sucessoAoMatricular();
+                } catch (Exception e) {
+                    Div mensagemErro = new Div();
+                    mensagemErro.setText("Erro: " + e.getMessage());
+                    mensagemErro.addClassName("mensagem-erro"); // Adicionando a classe CSS
+                    layout.add(mensagemErro);
+                    dialog.setWidth("500px"); // Ajustando a largura do diálogo para acomodar a mensagem de erro
+                }
+                dialog.close();
+            });
+            layout.add(cadastrarButton);
+        } else {
+            Div mensagemErro = new Div();
+            mensagemErro.setText("Você não está autorizado a se inscrever nesta disciplina.");
+            mensagemErro.addClassName("mensagem-erro"); // Adicionando a classe CSS
+            layout.add(mensagemErro);
+            dialog.setWidth("500px"); // Ajustando a largura do diálogo para acomodar a mensagem de erro
+        }
+
         dialog.add(layout);
         dialog.open();
     }
