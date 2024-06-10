@@ -27,7 +27,6 @@ public class FormCadastroP extends FormLayout {
     private final TextField dataFim = new TextField("Fim");
 
     private final Button save = new Button("Salvar");
-    private final Button delete = new Button("Deletar");
     private final Button close = new Button("Cancelar");
 
     public FormCadastroP() {
@@ -61,7 +60,6 @@ public class FormCadastroP extends FormLayout {
 
     private Component createButtonsLayout() {
         save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-        delete.addThemeVariants(ButtonVariant.LUMO_ERROR);
         close.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         close.addClassName("green-link");
 
@@ -69,10 +67,9 @@ public class FormCadastroP extends FormLayout {
         close.addClickShortcut(Key.ESCAPE);
 
         save.addClickListener(event -> validateAndSave());
-        delete.addClickListener(event -> fireEvent(new FormCadastroP.DeleteEvent(this, binder.getBean())));
         close.addClickListener(event -> fireEvent(new FormCadastroP.CloseEvent(this)));
 
-        return new HorizontalLayout(save, delete, close);
+        return new HorizontalLayout(save, close);
     }
 
     private void validateAndSave() {
@@ -151,11 +148,6 @@ public class FormCadastroP extends FormLayout {
         }
     }
 
-    public static class DeleteEvent extends FormCadastroP.ContactFormEvent {
-        DeleteEvent(FormCadastroP source, PeriodoMatricula periodo) {
-            super(source, periodo);
-        }
-    }
 
     public static class CloseEvent extends ComponentEvent<FormCadastroP> {
         CloseEvent(FormCadastroP source) {
@@ -163,9 +155,6 @@ public class FormCadastroP extends FormLayout {
         }
     }
 
-    public Registration addDeleteListener(ComponentEventListener<FormCadastroP.DeleteEvent> listener) {
-        return addListener(FormCadastroP.DeleteEvent.class, listener);
-    }
 
     public Registration addSaveListener(ComponentEventListener<FormCadastroP.SaveEvent> listener) {
         return addListener(FormCadastroP.SaveEvent.class, listener);
