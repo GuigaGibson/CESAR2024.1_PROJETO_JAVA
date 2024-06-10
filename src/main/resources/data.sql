@@ -21,6 +21,9 @@ INSERT INTO ALUNO (ID, VERSION, MATRICULA, NOME, EMAIL, SERIE, TURMA, SENHA) VAL
 INSERT INTO GESTOR (ID, VERSION, MATRICULA, NOME, EMAIL, SENHA) VALUES
 (1,1,'20232ADMPL0876', 'Leandro Lima', 'leandro@gmail.com', '4444');
 
+INSERT INTO PERIODO_MATRICULA (ID, VERSION, DATA_INICIO, DATA_FIM) VALUES
+(1, 1, '2023-01-01', '2023-06-01');
+
 INSERT INTO eletivas (id, version, nome, descricao, professor, vagas_disponiveis) VALUES
 (16, 1, 'Fotografia Digital', 'Curso básico de fotografia digital, incluindo composição, iluminação e edição.', 'Maria Silva', 30),
 (1, 1, 'Jogos Digitais', 'Curso introdutório ao design e desenvolvimento de jogos digitais.', 'Angela Tenório', 25),

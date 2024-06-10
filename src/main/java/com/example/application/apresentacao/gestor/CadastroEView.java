@@ -1,12 +1,13 @@
-package com.example.application.apresentacao;
+package com.example.application.apresentacao.gestor;
 
-import com.example.application.apresentacao.gestor.LayoutGestor;
 import com.example.application.entidade.Eletivas;
 import com.example.application.entidade.FormCadastroE;
+import com.example.application.entidade.PeriodoMatricula;
 import com.example.application.persistencia.RegistrationServiceE;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -33,11 +34,13 @@ public class CadastroEView extends VerticalLayout {
         setSizeFull();
         configureGrid();
         configureForm();
-
-        add(getToolbar(), getContent());
+        add(getTitle(), getToolbar(), getContent());
         updateList();
         closeEditor();
+    }
 
+    private H2 getTitle() {
+        return new H2("Cadastro de eletivas");
     }
 
     private HorizontalLayout getContent() {
@@ -64,16 +67,10 @@ public class CadastroEView extends VerticalLayout {
         grid.getColumnByKey("descricao").setHeader("Descricao");
         grid.getColumnByKey("professor").setHeader("Professor");
 
-
-
-
-
         grid.getColumns().forEach(col -> col.setAutoWidth(true));
 
         grid.asSingleSelect().addValueChangeListener(event ->
                 editContact(event.getValue()));
-
-
     }
 
     private Component getToolbar() {
@@ -121,7 +118,6 @@ public class CadastroEView extends VerticalLayout {
                 .collect(Collectors.toList()));
     }
 
-
     private void saveContact(FormCadastroE.SaveEvent event) {
         service.register(event.getContact());
         updateList();
@@ -133,4 +129,5 @@ public class CadastroEView extends VerticalLayout {
         updateList();
         closeEditor();
     }
+
 }

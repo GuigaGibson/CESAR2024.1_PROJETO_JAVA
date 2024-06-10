@@ -52,10 +52,10 @@ public class PerfilAlunoView extends VerticalLayout {
         Eletivas eletiva = alunoRepository.findEletivaByAlunoId(aluno.getId());
         if (eletiva != null) {
 
-                TextField eletivaField = new TextField("Eletiva: " + eletiva.getNome());
-                eletivaField.setValue(eletiva.getDescricao());
-                eletivaField.setReadOnly(true);
-                eletivasLayout.add(eletivaField);
+            TextField eletivaField = new TextField("Eletiva: " + eletiva.getNome());
+            eletivaField.setValue(eletiva.getDescricao());
+            eletivaField.setReadOnly(true);
+            eletivasLayout.add(eletivaField);
 
         }
 

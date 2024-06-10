@@ -21,6 +21,7 @@ public class FormCadastroE extends FormLayout {
     private final TextField nome = new TextField("Nome");
     private final TextField descricao = new TextField("Descrição");
     private final TextField professor = new TextField("Professor");
+    private final TextField quantidade = new TextField("Quantidade");
 
     private final Button save = new Button("Salvar");
     private final Button delete = new Button("Deletar");
@@ -29,7 +30,7 @@ public class FormCadastroE extends FormLayout {
     public FormCadastroE() {
         addClassName("eletiva-form");
         binder.bindInstanceFields(this);
-        add(nome, descricao, professor, createButtonsLayout());
+        add(nome, descricao, professor,quantidade, createButtonsLayout());
     }
 
     private Component createButtonsLayout() {

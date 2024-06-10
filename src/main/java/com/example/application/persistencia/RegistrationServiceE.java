@@ -29,9 +29,9 @@ public class RegistrationServiceE {
         return repositoryE.findAll();
     }
 
-    //public List<Eletivas> getEletivasByAlunoId(Long alunoId) {
-       // return alunoRepository.findEletivasByAlunoId(alunoId);
-   // }
+//    public List<Eletivas> getEletivasByAlunoId(Long alunoId) {
+//        return alunoRepository.findEletivasByAlunoId(alunoId);
+//    }
 
     public List<Aluno> getAlunosByEletivaId(Long eletivaId) {
         return repositoryE.findAlunosByEletivaId(eletivaId);
