@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 @Route(value = "aluno/home", layout = LayoutGestor.class)
 @PageTitle("Manipular Usuários | Trilhas Eletivas")
 public class ManipularAView extends VerticalLayout {
+
     private Grid<Aluno> grid = new Grid<>(Aluno.class);
     private TextField filterText = new TextField();
     private FormCadastroA form = new FormCadastroA();
@@ -115,4 +116,5 @@ public class ManipularAView extends VerticalLayout {
         updateList();
         closeEditor();
     }
+
 }

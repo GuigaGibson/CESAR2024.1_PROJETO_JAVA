@@ -78,6 +78,17 @@ public class Eletivas extends AbstractEntity {
 
     @Override
     public String toString() {
+
+        return "Eletivas{" +
+                "nome='" + nome + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", professor='" + professor + '\'' +
+                '}';
+    }
+
+
+
         return nome;
     }
+
 }

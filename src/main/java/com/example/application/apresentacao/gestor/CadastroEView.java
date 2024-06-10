@@ -1,12 +1,13 @@
 package com.example.application.apresentacao.gestor;
 
-import com.example.application.apresentacao.gestor.LayoutGestor;
 import com.example.application.entidade.Eletivas;
 import com.example.application.entidade.FormCadastroE;
+import com.example.application.entidade.PeriodoMatricula;
 import com.example.application.persistencia.RegistrationServiceE;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -32,10 +33,15 @@ public class CadastroEView extends VerticalLayout {
         setSizeFull();
         configureGrid();
         configureForm();
-
-        add(getToolbar(), getContent());
+        add(getTitle(), getToolbar(), getContent());
         updateList();
         closeEditor();
+
+    }
+
+    private H2 getTitle() {
+        return new H2("Cadastro de eletivas");
+
     }
 
     private HorizontalLayout getContent() {
@@ -61,7 +67,9 @@ public class CadastroEView extends VerticalLayout {
         grid.getColumnByKey("nome").setHeader("Nome");
         grid.getColumnByKey("descricao").setHeader("Descrição");
         grid.getColumnByKey("professor").setHeader("Professor");
+
         grid.getColumnByKey("serie").setHeader("Série"); // Define o cabeçalho da coluna "serie"
+
 
         grid.getColumns().forEach(col -> col.setAutoWidth(true));
 
@@ -125,4 +133,5 @@ public class CadastroEView extends VerticalLayout {
         updateList();
         closeEditor();
     }
+
 }
