@@ -65,6 +65,9 @@ public class CadastroPView extends VerticalLayout {
 
     private void configureGridPeriodo() {
         gridPeriodo.addClassNames("contact-grid");
+        gridPeriodo.setColumns("id");
+
+        gridPeriodo.getColumnByKey("id").setHeader("ID");
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
